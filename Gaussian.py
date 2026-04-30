@@ -84,7 +84,7 @@ def gaussInLimit(xInit, xFinal, xVal, weight):
         0.5 * (xFinal - xInit) * weight
     )
 
-def main()
+def main():
     """
     Realiza una gráfica de las aproximaciones de la integral respecto a los valoenteros entre 1 y 10.  
     
@@ -102,5 +102,5 @@ def main()
     plt.xlabel("Valor de N")
     plt.ylabel("Aproximación de la integral")
     plt.show()
-
+    return 0
 main()
