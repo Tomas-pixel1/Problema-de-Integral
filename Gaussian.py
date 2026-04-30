@@ -10,21 +10,21 @@ def func(xVal):
 
     Parámetros
     ----------
-    xVal : numpy.ndarray o float
-        Valor(es) donde se evaluará la función.
+        xVal : numpy.ndarray o float
+            Valor(es) donde se evaluará la función.
 
-    Retorna
-    -------
-    numpy.ndarray o float
-        Resultado de evaluar sin(x^2) en xVal.
+    Retorna:
+    ----------
+        numpy.ndarray o float
+            Resultado de evaluar sin(x^2) en xVal.
 
-    Ejemplos
-    --------
-    >>> func(1.0)
-    0.8414709848078965
+    Ejemplos:
+    ----------
+        >>> func(1.0)
+        0.8414709848078965
 
-    >>> func(np.array([0.0, 1.0]))
-    array([0.        , 0.84147098])
+        >>> func(np.array([0.0, 1.0]))
+        array([0.0, 0.84147098])
     """
     return np.sin(xVal * xVal)
 
@@ -35,23 +35,21 @@ def gaussOriginal(N):
 
     Parámetros
     ----------
-    N : int
-        Número de puntos de cuadratura.
+        N (int): Número de puntos de cuadratura.
 
     Retorna
-    -------
-    tuple of numpy.ndarray
-        (xVal, weight), donde:
-        - xVal: nodos de integración
-        - weight: pesos asociados
+    ----------
+        numpy.ndarray:(xVal, weight), donde:
+            - xVal: nodos de integración
+            - weight: pesos asociados
 
     Ejemplos
-    --------
-    >>> x, w = gaussOriginal(2)
-    >>> x
-    array([-0.577...,  0.577...])
-    >>> w
-    array([1., 1.])
+    ----------
+        >>> x, w = gaussOriginal(2)
+        >>> x
+        array([-0.577...,  0.577...])
+        >>> w
+        array([1.0, 1.0])
     """
     xVal, weight = np.polynomial.legendre.leggauss(N)
     return xVal, weight
@@ -65,26 +63,21 @@ def gaussInLimit(xInit, xFinal, xVal, weight):
 
     Parámetros
     ----------
-    xInit : float
-        Límite inferior de integración.
-    xFinal : float
-        Límite superior de integración.
-    xVal : numpy.ndarray
-        Nodos originales en [-1, 1].
-    weight : numpy.ndarray
-        Pesos originales.
+        xInit (float): Límite inferior de integración.
+        xFinal (float): Límite superior de integración.
+        xVal (numpy.ndarray): Nodos originales en [-1, 1].
+        weight(numpy.ndarray): Pesos originales.
 
     Retorna
-    -------
-    tuple of numpy.ndarray
-        (xVal_transformado, weight_transformado)
+    ----------
+        numpy.ndarray: ([xVal_transformado, weight_transformado])
 
     Ejemplos
-    --------
-    >>> x, w = gaussOriginal(2)
-    >>> x_new, w_new = gaussInLimit(0, np.pi, x, w)
-    >>> x_new
-    array([...])
+    ----------
+        >>> x, w = gaussOriginal(2)
+        >>> x_new, w_new = gaussInLimit(0, np.pi, x, w)
+        >>> x_new
+        array([...])
     """
     return (
         0.5 * (xFinal - xInit) * xVal + 0.5 * (xFinal + xInit),
