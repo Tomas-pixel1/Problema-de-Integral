@@ -1,0 +1,4 @@
+# Documentación del código
+
+::: Gaussian
+
